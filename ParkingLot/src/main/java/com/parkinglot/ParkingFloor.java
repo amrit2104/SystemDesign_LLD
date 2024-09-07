@@ -1,5 +1,8 @@
 package com.parkinglot;
 
+import com.parkinglot.enums.VehicleType;
+import com.parkinglot.enums.SpotSize;
+
 import java.util.ArrayList;
 import java.util.List;
 

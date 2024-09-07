@@ -1,5 +1,8 @@
 package com.parkinglot;
 
+import com.parkinglot.enums.VehicleType;
+import com.parkinglot.enums.SpotSize;
+
 public class ParkingSpot {
     private String spotNumber;
     private SpotSize size;

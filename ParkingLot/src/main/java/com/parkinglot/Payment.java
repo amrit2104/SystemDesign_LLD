@@ -1,5 +1,8 @@
 package com.parkinglot;
 
+import com.parkinglot.enums.VehicleType;
+import com.parkinglot.enums.SpotSize;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 
