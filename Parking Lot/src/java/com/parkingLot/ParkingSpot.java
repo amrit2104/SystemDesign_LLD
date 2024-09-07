@@ -17,13 +17,20 @@ public class ParkingSpot {
         this.isOccupied = true;
     }
 
-    public boolean releaseVehicle() {
+    public void releaseVehicle() {
         this.vehicle = null;
         this.isOccupied = false;
-        return true;
     }
 
     public boolean isAvailable() {
         return !isOccupied;
+    }
+
+    public String getSpotNumber() {
+        return spotNumber;
+    }
+
+    public SpotSize getSize() {
+        return size;
     }
 }

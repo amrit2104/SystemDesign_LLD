@@ -3,11 +3,12 @@ package com.parkinglot;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.time.LocalDateTime;
 
-public class ParkingLotTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+class ParkingLotTest {
+
     private ParkingLot parkingLot;
 
     @BeforeEach
@@ -29,11 +30,19 @@ public class ParkingLotTest {
         parkingLot.parkVehicle(car);
         Ticket ticket = new Ticket(car, parkingLot.getAvailableSpot(car), LocalDateTime.now());
 
-        // Simulate exit after 2 hours
         LocalDateTime exitTime = ticket.getEntryTime().plusHours(2);
         int fee = parkingLot.calculateFee(ticket, exitTime);
+        assertEquals(40, fee);
 
-        assertEquals(40, fee); // Assuming 20 per hour
         assertTrue(parkingLot.retrieveVehicle(ticket));
+    }
+
+    @Test
+    void testNoAvailableSpot() {
+        for (int i = 0; i < 12; i++) {
+            parkingLot.parkVehicle(new Car("CAR" + i));
+        }
+        Vehicle anotherCar = new Car("AB5678");
+        assertFalse(parkingLot.parkVehicle(anotherCar));
     }
 }

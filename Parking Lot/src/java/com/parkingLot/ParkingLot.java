@@ -1,5 +1,6 @@
 package com.parkinglot;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ParkingLot {
@@ -12,14 +13,21 @@ public class ParkingLot {
     public boolean parkVehicle(Vehicle vehicle) {
         for (ParkingFloor floor : floors) {
             if (floor.isSpotAvailable(vehicle)) {
-                return floor.parkVehicle(vehicle);
+                ParkingSpot spot = floor.getAvailableSpot(vehicle);
+                spot.assignVehicle(vehicle);
+                Ticket ticket = new Ticket(vehicle, spot, LocalDateTime.now());
+                System.out.println("Vehicle parked. Ticket: " + ticket.getTicketNumber());
+                return true;
             }
         }
+        System.out.println("No available spot for vehicle: " + vehicle.getLicensePlate());
         return false;
     }
 
     public boolean retrieveVehicle(Ticket ticket) {
-        return ticket.getSpot().releaseVehicle();
+        ticket.getSpot().releaseVehicle();
+        System.out.println("Vehicle retrieved with ticket number: " + ticket.getTicketNumber());
+        return true;
     }
 
     public int calculateFee(Ticket ticket, LocalDateTime exitTime) {
