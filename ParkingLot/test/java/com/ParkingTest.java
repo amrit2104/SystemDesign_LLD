@@ -28,4 +28,7 @@ class PaymentTest {
     void testCalculateFeeForTruck() {
         Vehicle truck = new Truck("TRUCK123");
         Ticket ticket = new Ticket(truck, null, LocalDateTime.now().minusHours(5));
-        int fee = Payment.calculateFee(ticket,
+        int fee = Payment.calculateFee(ticket, LocalDateTime.now());
+        assertEquals(200, fee);  // 5 hours * 40 per hour
+    }
+}
