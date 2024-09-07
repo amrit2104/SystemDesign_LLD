@@ -1,8 +1,15 @@
-import com.parkinglot.enums.VehicleType; 
-import com.parkinglot.Vehicle; 
+package com.parkinglot;
+
+import com.parkinglot.ParkingLot;
+import com.parkinglot.Car;        // Importing source classes
+import com.parkinglot.Bike;
+import com.parkinglot.Vehicle;
+import com.parkinglot.Ticket;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+// import org.junit.jupiter.api.Tests;
+// import org.junit.jupiter.api.TestCase;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDateTime;
